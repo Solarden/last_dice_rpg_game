@@ -19,20 +19,19 @@ def player_dices_render(number_of_players):
 
 
 def players_roll(player_dices, number_of_players):
-    for i in range(number_of_players):
-        input('Click ENTER to roll \n')
-        for key, values in player_dices.items():
-            count = 0
-            counter = []
-            for dice in values:
-                roll = randint(1, dice)
-                print(f'Player {key}: D{dice} result: ' + str(roll))
-                if roll == 1:
-                    count += 1
-                    counter.append(count)
-            if count > 0:
-                for i in counter:
-                    values.remove(values[-1])
+    input('Click ENTER to roll \n')
+    for key, values in player_dices.items():
+        count = 0
+        counter = []
+        for dice in values:
+            roll = randint(1, dice)
+            print(f'Player {key}: D{dice} result: ' + str(roll))
+            if roll == 1:
+                count += 1
+                counter.append(count)
+        if count > 0:
+            for i in counter:
+                values.remove(values[-1])
     return check_player_dices(player_dices, number_of_players)
 
 
