@@ -3,8 +3,12 @@ from random import randint
 
 def start_game():
     print('Welcome to the game')
-    number_of_players = int(input('Enter amount of players: \n'))
-    return player_dices_render(number_of_players)
+    while True:
+        try:
+            number_of_players = int(input('Enter amount of players: \n'))
+            return player_dices_render(number_of_players)
+        except ValueError:
+            print('Please enter valid integer')
 
 
 def player_dices_render(number_of_players):
@@ -51,7 +55,7 @@ def check_player_dices(player_dices, number_of_players):
                     if len(player_dices) == 1:
                         return check_amount_of_players(player_dices)
         except RuntimeError:
-            pass
+            return check_player_dices(player_dices, number_of_players)
     return check_amount_of_players(player_dices)
 
 
